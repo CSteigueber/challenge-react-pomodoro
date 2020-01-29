@@ -12,8 +12,15 @@ class Time {
 class Clock extends React.Component{
     constructor (props) {
         super(props);
-        this.state= {seconds:1200};
-
+        this.state= {seconds:1200,
+                     running: false,
+        };
+        this.handleClick = this.handleClick.bind(this);
+    }
+    handleClick(){
+        this.setState({
+            running: !this.state.running
+        });
     }
     componentDidMount(){
         this.timerID = setInterval( ()=>this.tick(), 1000);
@@ -22,11 +29,16 @@ class Clock extends React.Component{
         clearInterval(this.timerID);
     }
     tick(){
-        this.setState({seconds: this.state.seconds-1});
+        if (this.state.running){
+            this.setState({seconds: this.state.seconds-1});
+        }
     }
     render(){
-    return <h1>{Math.floor(this.state.seconds/60 < 10 ? '0'+this.state.seconds/60 : this.state.seconds/60)}
-    :{this.state.seconds%60 < 10 ? '0'+this.state.seconds%60 : this.state.seconds%60}</h1>;
+    return (<div><h1>{Math.floor(this.state.seconds/60 < 10 ? '0'+this.state.seconds/60 : this.state.seconds/60)}
+        :{this.state.seconds%60 < 10 ? '0'+this.state.seconds%60 : this.state.seconds%60}</h1>
+        <button onClick={this.handleClick}>{this.state.running ? 'Stop' : 'Start'}</button>
+        </div>
+    );
  
     }
 }
