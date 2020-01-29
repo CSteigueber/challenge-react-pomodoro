@@ -9,6 +9,17 @@ class Time {
      sec;
 }
 class Pause extends React.Component {
+    constructor (props){
+        super(props);
+        this.handleResetClick= this.handleResetClick.bind(this);
+        this.handleCloseClick= this.handleCloseClick.bind(this);
+    }
+    handleResetClick(){
+        
+    }    
+    handleResetClick(){
+        
+    }
     render(){
         return (<div>
                     <h2>You should take a break, bro!</h2>
