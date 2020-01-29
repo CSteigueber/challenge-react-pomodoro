@@ -4,10 +4,30 @@ import './index.css';
 // import * as serviceWorker from './serviceWorker';
 // import App from './App';
 // import { ReactComponent } from '*.svg';
+class Time {
+     min;
+     sec;
+}
+
+function formatSeconds(seconds){
+    let time = new Time;
+    time.min=Math.floor(seconds/60);
+    time.sec=seconds%60;
+    return time;
+}
+class Clock extends React.Component{
+    constructor (props) {
+        super(props);
+        this.time=formatSeconds(1200);
+    }
+    render(){
+    return <h1>{this.time.min}:{this.time.sec}</h1>
+    }
+}
 
 class App extends React.Component {
     render(){
-        return <h1>Hello world!</h1>;
+        return <Clock/>;
     }
 }
 
