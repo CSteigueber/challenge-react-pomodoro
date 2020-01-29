@@ -9,12 +9,6 @@ class Time {
      sec;
 }
 
-function formatSeconds(seconds){
-    let time = new Time;
-    time.min=Math.floor(seconds/60);
-    time.sec=seconds%60;
-    return time;
-}
 class Clock extends React.Component{
     constructor (props) {
         super(props);
