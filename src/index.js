@@ -31,7 +31,8 @@ class Clock extends React.Component{
         this.setState({seconds: this.state.seconds-1});
     }
     render(){
-    return <h1>{Math.floor(this.state.seconds/60)}:{this.state.seconds%60}</h1>;
+    return <h1>{Math.floor(this.state.seconds/60 < 10 ? '0'+this.state.seconds/60 : this.state.seconds/60)}
+    :{this.state.seconds%60 < 10 ? '0'+this.state.seconds%60 : this.state.seconds%60}</h1>;
  
     }
 }
