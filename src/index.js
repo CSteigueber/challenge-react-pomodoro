@@ -8,6 +8,16 @@ class Time {
      min;
      sec;
 }
+class Pause extends React.Component {
+    render(){
+        return (<div>
+                    <h2>You should take a break, bro!</h2>
+                    <button>Restart timer</button>
+                    <button>Close</button>
+                </div>);
+    }
+
+}
 
 class Clock extends React.Component{
     constructor (props) {
@@ -38,7 +48,7 @@ class Clock extends React.Component{
         this.setState({seconds: this.state.seconds +60});
     }
     handlesMinusClick(){
-        if (this.state.running){
+        if (this.state.running || this.state.seconds==0){
             return;
         }
         this.setState({seconds: this.state.seconds -60});
@@ -63,6 +73,7 @@ class Clock extends React.Component{
                 <button onClick={this.handleStartResetClick}>{this.state.running ? 'Reset' : 'Start'}</button>
                 <button onClick={this.handlesPlusClick}>+</button>                
                 <button onClick={this.handlesMinusClick}>-</button>
+                {this.state.seconds==0? <Pause />:null}
             </div>
     );
  
@@ -70,8 +81,9 @@ class Clock extends React.Component{
 }
 
 class App extends React.Component {
+
     render(){
-        return <Clock/>;
+        return <Clock />;
     }
 }
 
