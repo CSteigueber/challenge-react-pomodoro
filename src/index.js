@@ -18,10 +18,12 @@ function formatSeconds(seconds){
 class Clock extends React.Component{
     constructor (props) {
         super(props);
-        this.time=formatSeconds(1200);
+        this.state= {time:formatSeconds(1200)};
+
     }
     render(){
-    return <h1>{this.time.min}:{this.time.sec}</h1>
+    return <h1>{this.state.time.min}:{this.state.time.sec}</h1>
+ 
     }
 }
 
