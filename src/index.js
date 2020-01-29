@@ -12,10 +12,11 @@ class Time {
 class Clock extends React.Component{
     constructor (props) {
         super(props);
-        this.initial=1200;
+        this.initial= 1200;
         this.state= {seconds:this.initial,
                      running: false,
         };
+
         this.handleStartResetClick = this.handleStartResetClick.bind(this);
         this.handlesPlusClick = this.handlesPlusClick.bind(this);
         this.handlesMinusClick = this.handlesMinusClick.bind(this);
