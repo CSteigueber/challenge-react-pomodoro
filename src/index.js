@@ -4,10 +4,6 @@ import './index.css';
 // import * as serviceWorker from './serviceWorker';
 // import App from './App';
 // import { ReactComponent } from '*.svg';
-class Time {
-     min;
-     sec;
-}
 
 class Clock extends React.Component{
     constructor (props) {
