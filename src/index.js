@@ -8,27 +8,6 @@ class Time {
      min;
      sec;
 }
-class Pause extends React.Component {
-    constructor (props){
-        super(props);
-        this.handleResetClick= this.handleResetClick.bind(this);
-        this.handleCloseClick= this.handleCloseClick.bind(this);
-    }
-    handleResetClick(){
-        
-    }    
-    handleResetClick(){
-        
-    }
-    render(){
-        return (<div>
-                    <h2>You should take a break, bro!</h2>
-                    <button>Restart timer</button>
-                    <button>Close</button>
-                </div>);
-    }
-
-}
 
 class Clock extends React.Component{
     constructor (props) {
@@ -41,6 +20,17 @@ class Clock extends React.Component{
         this.handleStartResetClick = this.handleStartResetClick.bind(this);
         this.handlesPlusClick = this.handlesPlusClick.bind(this);
         this.handlesMinusClick = this.handlesMinusClick.bind(this);
+        this.handleResetClick= this.handleResetClick.bind(this);
+        this.handleCloseClick= this.handleCloseClick.bind(this);
+    }
+    handleResetClick(){
+        this.setState({ seconds: this.initial});
+    }    
+    handleCloseClick(){
+        this.setState({
+            seconds: this.initial,
+            running: false,
+        });
     }
     handleStartResetClick(){
         if (this.state.running){
@@ -84,7 +74,13 @@ class Clock extends React.Component{
                 <button onClick={this.handleStartResetClick}>{this.state.running ? 'Reset' : 'Start'}</button>
                 <button onClick={this.handlesPlusClick}>+</button>                
                 <button onClick={this.handlesMinusClick}>-</button>
-                {this.state.seconds==0? <Pause />:null}
+                {this.state.seconds==0? 
+                    <div>
+                        <h2>You should take a break, bro!</h2>
+                        <button onClick={this.handleResetClick} >Restart timer</button>
+                        <button onClick={this.handleCloseClick} >Close</button>
+                    </div>
+                    :null}
             </div>
     );
  
